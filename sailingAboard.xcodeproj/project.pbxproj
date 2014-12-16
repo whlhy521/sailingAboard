@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A43631D1A3FFC53006F8712 /* JJUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A43631C1A3FFC53006F8712 /* JJUtility.m */; };
+		0A4363201A3FFCB3006F8712 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A43631F1A3FFCB3006F8712 /* UIViewExt.m */; };
+		0A4363231A3FFCCC006F8712 /* JJNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4363221A3FFCCC006F8712 /* JJNetManager.m */; };
+		0A4363261A3FFCDB006F8712 /* JJRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4363251A3FFCDB006F8712 /* JJRequestManager.m */; };
+		0A43632A1A3FFD4C006F8712 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4363291A3FFD4C006F8712 /* JSONKit.m */; };
 		4023AE5A19F9F9DA00865BEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4023AE5919F9F9DA00865BEE /* Foundation.framework */; };
 		4023AE5C19F9F9DA00865BEE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4023AE5B19F9F9DA00865BEE /* CoreGraphics.framework */; };
 		4023AE5E19F9F9DA00865BEE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4023AE5D19F9F9DA00865BEE /* UIKit.framework */; };
@@ -85,6 +90,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A43631A1A3FFC31006F8712 /* JJMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJMacro.h; sourceTree = "<group>"; };
+		0A43631B1A3FFC53006F8712 /* JJUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJUtility.h; sourceTree = "<group>"; };
+		0A43631C1A3FFC53006F8712 /* JJUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJUtility.m; sourceTree = "<group>"; };
+		0A43631E1A3FFCB3006F8712 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		0A43631F1A3FFCB3006F8712 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		0A4363211A3FFCCC006F8712 /* JJNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJNetManager.h; sourceTree = "<group>"; };
+		0A4363221A3FFCCC006F8712 /* JJNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJNetManager.m; sourceTree = "<group>"; };
+		0A4363241A3FFCDB006F8712 /* JJRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJRequestManager.h; sourceTree = "<group>"; };
+		0A4363251A3FFCDB006F8712 /* JJRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJRequestManager.m; sourceTree = "<group>"; };
+		0A4363281A3FFD4C006F8712 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		0A4363291A3FFD4C006F8712 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		4023AE5619F9F9DA00865BEE /* sailingAboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sailingAboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4023AE5919F9F9DA00865BEE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4023AE5B19F9F9DA00865BEE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -212,9 +228,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A4363191A3FFBEA006F8712 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				0A43631A1A3FFC31006F8712 /* JJMacro.h */,
+				0A43631B1A3FFC53006F8712 /* JJUtility.h */,
+				0A43631C1A3FFC53006F8712 /* JJUtility.m */,
+				0A43631E1A3FFCB3006F8712 /* UIViewExt.h */,
+				0A43631F1A3FFCB3006F8712 /* UIViewExt.m */,
+				0A4363211A3FFCCC006F8712 /* JJNetManager.h */,
+				0A4363221A3FFCCC006F8712 /* JJNetManager.m */,
+				0A4363241A3FFCDB006F8712 /* JJRequestManager.h */,
+				0A4363251A3FFCDB006F8712 /* JJRequestManager.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		0A4363271A3FFD4C006F8712 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				0A4363281A3FFD4C006F8712 /* JSONKit.h */,
+				0A4363291A3FFD4C006F8712 /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
 		4023AE4D19F9F9DA00865BEE = {
 			isa = PBXGroup;
 			children = (
+				0A4363191A3FFBEA006F8712 /* Utility */,
 				40BF95C919FE228300757DC4 /* ThirdLib */,
 				4023AE5F19F9F9DA00865BEE /* sailingAboard */,
 				4023AE5819F9F9DA00865BEE /* Frameworks */,
@@ -371,6 +413,7 @@
 		40BF95C919FE228300757DC4 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				0A4363271A3FFD4C006F8712 /* JSONKit */,
 				40B9D5BF1A134949003F3BC2 /* asiHttpRequest */,
 				40BF95CA19FE22A400757DC4 /* libWeiboSDK */,
 			);
@@ -499,9 +542,11 @@
 				40B9D5D71A134949003F3BC2 /* ASIDataCompressor.m in Sources */,
 				40C98BDF1A0B4F4D00068C9C /* JJPersonalCenterViewController.m in Sources */,
 				4023AE6A19F9F9DA00865BEE /* JJAppDelegate.m in Sources */,
+				0A43631D1A3FFC53006F8712 /* JJUtility.m in Sources */,
 				40B9D5DA1A134949003F3BC2 /* ASIFormDataRequest.m in Sources */,
 				40C98BF31A0CA1E800068C9C /* JJRigisteViewController.m in Sources */,
 				40B9D5DD1A134949003F3BC2 /* ASINetworkQueue.m in Sources */,
+				0A4363261A3FFCDB006F8712 /* JJRequestManager.m in Sources */,
 				40C98BE41A0B717700068C9C /* JJSettingViewController.m in Sources */,
 				40F27EE21A0CCE770021E7B9 /* JJUnivercityViewController.m in Sources */,
 				40B9D5D61A134949003F3BC2 /* ASIAuthenticationDialog.m in Sources */,
@@ -514,7 +559,10 @@
 				4023AE6619F9F9DA00865BEE /* main.m in Sources */,
 				40B9D5DB1A134949003F3BC2 /* ASIHTTPRequest.m in Sources */,
 				40C98BEC1A0C6F2600068C9C /* JJLoginViewController.m in Sources */,
+				0A4363201A3FFCB3006F8712 /* UIViewExt.m in Sources */,
+				0A4363231A3FFCCC006F8712 /* JJNetManager.m in Sources */,
 				40C98BDA1A0A269700068C9C /* JJDetailContentViewController.m in Sources */,
+				0A43632A1A3FFD4C006F8712 /* JSONKit.m in Sources */,
 				40B9D5DC1A134949003F3BC2 /* ASIInputStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
