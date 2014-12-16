@@ -16,9 +16,6 @@
     // sina login
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kAppKey];
-    
-    exit(1);
-    
     return YES;
 }
 							
