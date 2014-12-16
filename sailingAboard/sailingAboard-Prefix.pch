@@ -14,4 +14,11 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <QuartzCore/QuartzCore.h>
+
+#import "JJMacro.h"
+#import "UIViewExt.h"
+#import "JJUtility.h"
+#import "JJNetManager.h"
+#import "JJRequestManager.h"
+
 #endif

@@ -8,59 +8,130 @@
 
 #import "JJAppDelegate.h"
 #import "JJLoginViewController.h"
+#import "JJViewController.h"
+#import "WBHttpRequest.h"
+#import "JJNetManager.h"
 
 @implementation JJAppDelegate
 
+@synthesize wbtoken;
+@synthesize wbCurrentUserID;
+@synthesize wbUser;
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // sina login
+    //sina login
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.window makeKeyAndVisible];
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kAppKey];
+    //检测是否已经授权，是则加载job界面，否则加载登陆界面
+    BOOL isNeedLogin = [self isNeedLoginWithSinaWeibo];
+    if(isNeedLogin){
+        [self showLoginView];
+    }
+    else{
+        [self showJobsView];
+    }
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    if (1) {
-        [self showLoginView];
-    }
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
 }
 
+- (BOOL)isNeedLoginWithSinaWeibo{
+    BOOL need = YES;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *sinaweiboInfo = [defaults objectForKey:@"SinaWeiboAuthData"];
+    if ([sinaweiboInfo objectForKey:@"AccessTokenKey"] && [sinaweiboInfo objectForKey:@"ExpirationDateKey"] &&
+        [sinaweiboInfo objectForKey:@"UserIDKey"] && [sinaweiboInfo objectForKey:@"refresh_token"]) {
+        wbtoken = [sinaweiboInfo objectForKey:@"AccessTokenKey"];
+        wbCurrentUserID = [sinaweiboInfo objectForKey:@"UserIDKey"];
+        NSDate *expirationDate = [sinaweiboInfo objectForKey:@"ExpirationDateKey"];
+        NSDate *nowDate = [NSDate date];
+        NSTimeInterval expirationInterval = [expirationDate timeIntervalSinceDate:nowDate];
+        if(expirationInterval>0){
+            need = NO;
+        }
+    }
+    return need;
+}
+
+
+//展示登陆界面
 - (void)showLoginView
 {
     JJLoginViewController *loginViewController = [[JJLoginViewController alloc] initWithNibName:nil bundle:nil];
-    [self.window.rootViewController presentViewController:loginViewController animated:NO completion:nil];
+    self.window.rootViewController = loginViewController;
 }
 
-#pragma mark - weibo delegate
+//展示jobs界面
+- (void)showJobsView{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *jvcNac = [mainStoryboard instantiateInitialViewController];
+    self.window.rootViewController = jvcNac;
+}
+
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     return [WeiboSDK handleOpenURL:url delegate:self];
 }
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [WeiboSDK handleOpenURL:url delegate:self ];
+}
+
+
+//获取当前登录用户的微博信息
+- (void)requestForUserProfile
+{
+   __weak JJBaseViewController *baseVC = (JJBaseViewController *)self.window.rootViewController;
+    [baseVC showProgressHUD];
+    [WBHttpRequest requestForUserProfile:wbCurrentUserID withAccessToken:wbtoken andOtherProperties:nil queue:nil withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
+        [baseVC showProgressHUD];
+        if(error){
+            [baseVC showToastMessage:error.description];
+        }
+        else{
+            self.wbUser = result;
+            
+            [self showJobsView];
+        }
+    }];
+}
+
+
+//执行登陆网络请求
+- (void)requestLogin{
+    
+}
+
+
+
+#pragma mark - weibo delegate
 
 - (void)didReceiveWeiboRequest:(WBBaseRequest *)request
 {
@@ -106,14 +177,30 @@
         if (response.statusCode == WeiboSDKResponseStatusCodeSuccess) {     // 认证成功才将数据保存并回调
             NSLog(@"登陆成功");
             NSString *userid = [(WBAuthorizeResponse *)response userID];
+            wbCurrentUserID = userid;
             wbtoken = [(WBAuthorizeResponse *)response accessToken];
+            NSString *refreshToken = [(WBAuthorizeResponse *)response refreshToken];
+            NSDate *expirationDate = [(WBAuthorizeResponse *)response expirationDate];
             
-            NSString * oauthString = [NSString stringWithFormat:@"https://api.weibo.com/2/users/show.json?uid=%@&access_token=%@",userid,wbtoken];
+            NSDictionary *authData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      wbtoken, @"AccessTokenKey",
+                                      expirationDate, @"ExpirationDateKey",
+                                      wbCurrentUserID, @"UserIDKey",
+                                      refreshToken, @"refresh_token", nil];
             
-            ASIHTTPRequest *httpRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:oauthString]];
-            [httpRequest startAsynchronous];
+            [[NSUserDefaults standardUserDefaults] setObject:authData forKey:@"SinaWeiboAuthData"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+         
+
+//授权后获取当前用户信息
+//            NSString *oauthString = [NSString stringWithFormat:@"https://api.weibo.com/2/users/show.json?uid=%@&access_token=%@",userid,wbtoken];
+//            
+//            ASIHTTPRequest *httpRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:oauthString]];
+//            [httpRequest startAsynchronous];
+            [self requestForUserProfile];
             
-        } else if (response.statusCode == WeiboSDKResponseStatusCodeAuthDeny)
+        }
+        else if (response.statusCode == WeiboSDKResponseStatusCodeAuthDeny)
         {
             NSLog(@"授权失败");
         }

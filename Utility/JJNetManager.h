@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface JJNetManager : NSObject
+/**
+ *  检测网络函数
+ *
+ *  @return 有网络时 YES
+ */
++ (BOOL)isNetworkRunning;
 
 @end

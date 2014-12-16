@@ -10,4 +10,14 @@
 
 @interface JJBaseViewController : UIViewController
 
+- (void)showAlert:(NSString *)msg;
+
+- (void)showProgressHUD;
+
+- (void)hideProgressHUD;
+
+- (void)showToastMessage:(NSString *)message;
+
+- (void)showNetWorkFailToast;
+
 @end

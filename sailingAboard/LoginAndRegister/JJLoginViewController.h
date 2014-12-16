@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "WeiboSDK.h"
+#import "JJBaseViewController.h"
 
-#define kAppKey         @"2032427802"
+#define kAppKey         @"287104922"
 #define kRedirectURI    @"https://api.weibo.com/oauth2/default.html"
 
-@interface JJLoginViewController : UIViewController
+@interface JJLoginViewController : JJBaseViewController
+
 - (IBAction)login:(id)sender;
 
 @end

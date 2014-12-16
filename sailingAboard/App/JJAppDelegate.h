@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "WeiboSDK.h"
-#import "ASIHTTPRequest.h"
+#import "WeiboUser.h"
 
-@interface JJAppDelegate : UIResponder <UIApplicationDelegate, WeiboSDKDelegate, ASIHTTPRequestDelegate>
+@interface JJAppDelegate : UIResponder <UIApplicationDelegate, WeiboSDKDelegate>
 {
-    UIView *loginView;
     NSString* wbtoken;
+    NSString* wbCurrentUserID;
+    WeiboUser* wbUser;
 }
+
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSString *wbtoken;
+@property (strong, nonatomic) WeiboUser *wbUser;
+@property (strong, nonatomic) NSString *wbCurrentUserID;
 
 @end

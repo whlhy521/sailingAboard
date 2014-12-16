@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JJBaseViewController.h"
 
-@interface JJRigisteViewController : UIViewController
+@interface JJRigisteViewController : JJBaseViewController
 
 - (IBAction)next:(id)sender;
 @end
