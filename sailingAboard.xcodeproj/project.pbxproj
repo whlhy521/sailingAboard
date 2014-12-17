@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1786441A412C77000F5AF6 /* JJCityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1786421A412C77000F5AF6 /* JJCityListViewController.m */; };
+		0A1786451A412C77000F5AF6 /* JJCityListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1786431A412C77000F5AF6 /* JJCityListViewController.xib */; };
 		0A43631D1A3FFC53006F8712 /* JJUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A43631C1A3FFC53006F8712 /* JJUtility.m */; };
 		0A4363201A3FFCB3006F8712 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A43631F1A3FFCB3006F8712 /* UIViewExt.m */; };
 		0A4363231A3FFCCC006F8712 /* JJNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4363221A3FFCCC006F8712 /* JJNetManager.m */; };
@@ -92,6 +94,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1786411A412C77000F5AF6 /* JJCityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJCityListViewController.h; sourceTree = "<group>"; };
+		0A1786421A412C77000F5AF6 /* JJCityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJCityListViewController.m; sourceTree = "<group>"; };
+		0A1786431A412C77000F5AF6 /* JJCityListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JJCityListViewController.xib; sourceTree = "<group>"; };
 		0A43631A1A3FFC31006F8712 /* JJMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JJMacro.h; sourceTree = "<group>"; };
 		0A43631B1A3FFC53006F8712 /* JJUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJUtility.h; sourceTree = "<group>"; };
 		0A43631C1A3FFC53006F8712 /* JJUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJUtility.m; sourceTree = "<group>"; };
@@ -496,6 +501,9 @@
 		843ECDFE1A40615C008B7599 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				0A1786411A412C77000F5AF6 /* JJCityListViewController.h */,
+				0A1786421A412C77000F5AF6 /* JJCityListViewController.m */,
+				0A1786431A412C77000F5AF6 /* JJCityListViewController.xib */,
 				843ECE131A406252008B7599 /* JJSettingViewController.h */,
 				843ECE141A406252008B7599 /* JJSettingViewController.m */,
 				843ECE151A406252008B7599 /* JJSettingViewController.xib */,
@@ -581,6 +589,7 @@
 			files = (
 				4023AE7219F9F9DA00865BEE /* Images.xcassets in Resources */,
 				40B5C3FE1A08A563008D0876 /* sail@2x.png in Resources */,
+				0A1786451A412C77000F5AF6 /* JJCityListViewController.xib in Resources */,
 				40B5C3ED1A08A563008D0876 /* arrow@2x.png in Resources */,
 				843ECE301A4062ED008B7599 /* JJPersonalCenterViewController.xib in Resources */,
 				4023AE6419F9F9DA00865BEE /* InfoPlist.strings in Resources */,
@@ -638,6 +647,7 @@
 				40B9D5D71A134949003F3BC2 /* ASIDataCompressor.m in Sources */,
 				0A43631D1A3FFC53006F8712 /* JJUtility.m in Sources */,
 				40B9D5DA1A134949003F3BC2 /* ASIFormDataRequest.m in Sources */,
+				0A1786441A412C77000F5AF6 /* JJCityListViewController.m in Sources */,
 				40B9D5DD1A134949003F3BC2 /* ASINetworkQueue.m in Sources */,
 				843ECE481A4089A8008B7599 /* MBProgressHUD.m in Sources */,
 				843ECE211A406252008B7599 /* JJUnivercityListViewController.m in Sources */,
